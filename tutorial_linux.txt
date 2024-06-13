@@ -8,9 +8,8 @@ Opções de montagem: discard, noatime, nodiratime
 
 *** COMANDOS: ***
 
-vi /etc/apt/sources.list
-	-> comentar as fontes do tipo "-src"
-	-> adicionar as seguintes fontes de código: main contrib non-free non-free-firmware
+sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list
+sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list
 
 sudo apt update
 
@@ -24,6 +23,15 @@ echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
 sudo echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> /root/.bashrc
 source ~/.bashrc
 sudo source /root/.bashrc
+
+sed -i 's/#shopt/shopt/g' "/home/$USER/.bashrc"
+sed -i 's/#[/[/g' "/home/$USER/.bashrc"
+sed -i 's/#force_color/force_color/g' "/home/$USER/.bashrc"
+sed -i 's/#alias/alias/g' "/home/$USER/.bashrc"
+sed -i 's/#export/export/g' "/home/$USER/.bashrc"
+sed -i 's/# export/export/g' "/root/.bashrc"
+sed -i 's/# eval/eval/g' "/root/.bashrc"
+sed -i 's/# alias/alias/g' "/root/.bashrc"
 
 nvim .bashrc
 -> Descomentar os comandos "alias" e "export" para tornar o bash mais amigável
