@@ -37,7 +37,11 @@ apt install -y xfce4 && \
 
 apt install -y xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager && \
 
-apt install -y chromium-l10n && dpkg-reconfigure locales && locale-gen && \
+apt install -y chromium-l10n && \
+
+#Rodar manualmente para configurar idioma do Chromium:
+
+#dpkg-reconfigure locales && locale-gen
 
 apt remove xterm && \
 
@@ -51,7 +55,7 @@ dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
 
 apt install -y ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
-apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom plank
+apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank
 
 
 :`
