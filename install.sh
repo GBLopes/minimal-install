@@ -1,57 +1,55 @@
 #!/usr/bin/env bash
 
-cd "/home/$USER"
+cd "/home/$USER" && \
 
 # Update sources list
-sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list
-sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list
+sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list && \
+sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list && \
 
-apt update
-
-apt install bash-completion curl && source /etc/bash_completion
+apt update && apt install bash-completion curl && source /etc/bash_completion && \
 
 # Neovim
-mkdir /opt
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-tar -C /opt -xzf nvim-linux64.tar.gz
-echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/home/$USER/.bashrc"
-echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/root/.bashrc"
-source "/home/$USER/.bashrc"
-source "/root/.bashrc"
+mkdir /opt && \
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && \
+tar -C /opt -xzf nvim-linux64.tar.gz && \
+echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/home/$USER/.bashrc" && \
+echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/root/.bashrc" && \
+source "/home/$USER/.bashrc" && \
+source "/root/.bashrc" && \
 
-sed -i 's/#shopt/shopt/g' "/home/$USER/.bashrc"
-sed -i 's/#[/[/g' "/home/$USER/.bashrc"
-sed -i 's/#force_color/force_color/g' "/home/$USER/.bashrc"
-sed -i 's/#alias/alias/g' "/home/$USER/.bashrc"
-sed -i 's/#export/export/g' "/home/$USER/.bashrc"
-sed -i 's/# export/export/g' "/root/.bashrc"
-sed -i 's/# eval/eval/g' "/root/.bashrc"
-sed -i 's/# alias/alias/g' "/root/.bashrc"
+sed -i 's/#shopt/shopt/g' "/home/$USER/.bashrc" && \
+sed -i 's/#[/[/g' "/home/$USER/.bashrc" && \
+sed -i 's/#force_color/force_color/g' "/home/$USER/.bashrc" && \
+sed -i 's/#alias/alias/g' "/home/$USER/.bashrc" && \
+sed -i 's/#export/export/g' "/home/$USER/.bashrc" && \
+sed -i 's/# export/export/g' "/root/.bashrc" && \
+sed -i 's/# eval/eval/g' "/root/.bashrc" && \
+sed -i 's/# alias/alias/g' "/root/.bashrc" && \
 
-echo 'source /etc/bash_completion' >> "/home/$USER/.bashrc"
-echo 'source /etc/bash_completion' >> "/root/.bashrc"
-source "/home/$USER/.bashrc"
-source "/root/.bashrc"
+echo 'source /etc/bash_completion' >> "/home/$USER/.bashrc" && \
+echo 'source /etc/bash_completion' >> "/root/.bashrc" && \
+source "/home/$USER/.bashrc" && \
+source "/root/.bashrc" && \
 
-apt install xorg
+apt install xorg && \
 
-apt install xfce4
+apt install xfce4 && \
 
-apt install xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager
+apt install xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager && \
 
-apt install chromium-l10n && dpkg-reconfigure locales && locale-gen
+apt install chromium-l10n && dpkg-reconfigure locales && locale-gen && \
 
-apt remove xterm
+apt remove xterm && \
 
 #LibreOffice:
-curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz
-tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz
-dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb/DEBS/*.deb
-curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz
-tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR
-dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb
+curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
+tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
+dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb/DEBS/*.deb && \
+curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
+tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR && \
+dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
 
-apt install ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing
+apt install ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
 apt install ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom
 
