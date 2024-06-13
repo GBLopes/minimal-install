@@ -6,7 +6,7 @@ cd "/home/$USER" && \
 sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list && \
 sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list && \
 
-apt update && apt install bash-completion curl && source /etc/bash_completion && \
+apt update && apt install -y bash-completion curl && source /etc/bash_completion && \
 
 # Neovim
 mkdir /opt && \
@@ -31,13 +31,13 @@ echo 'source /etc/bash_completion' >> "/root/.bashrc" && \
 source "/home/$USER/.bashrc" && \
 source "/root/.bashrc" && \
 
-apt install xorg && \
+apt install -y xorg && \
 
-apt install xfce4 && \
+apt install -y xfce4 && \
 
-apt install xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager && \
+apt install -y xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager && \
 
-apt install chromium-l10n && dpkg-reconfigure locales && locale-gen && \
+apt install -y chromium-l10n && dpkg-reconfigure locales && locale-gen && \
 
 apt remove xterm && \
 
@@ -49,9 +49,9 @@ curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x
 tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR && \
 dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
 
-apt install ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
+apt install -y ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
-apt install ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom plank
+apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom plank
 
 
 :`
@@ -71,7 +71,7 @@ Criar subvolumes para fazer backup em BTRFS:
 		-> mv @rootfs @
 
 Colocar snapshots na inicialização do grub (grub-btrfs):
-	-> apt install inotify-tools
+	-> apt install -y inotify-tools
 	-> git clone https://github.com/Antynea/grub-btrfs.git
 	-> make install
 	-> /etc/grub.d/41_snapshots-btrfs
@@ -165,7 +165,7 @@ picom (compositor)
 	-> Add picom na inicialização (o comando pra iniciar é picom)
 
 Tela de login
-	-> apt install lightdm-gtk-greeter-settings
+	-> apt install -y lightdm-gtk-greeter-settings
 	-> Copiar os wallpapers para a pasta correta
 		-> cp -R ~/Imagens/wallpapers /usr/share/backgrounds
 	-> cp -r ~/.themes/ /usr/share/themes
