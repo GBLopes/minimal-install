@@ -12,6 +12,7 @@ apt update && apt install -y bash-completion curl && source /etc/bash_completion
 mkdir /opt && \
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && \
 tar -C /opt -xzf nvim-linux64.tar.gz && \
+rm nvim-linux64.tar.gz 
 echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/home/$USER/.bashrc" && \
 echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/root/.bashrc" && \
 source "/home/$USER/.bashrc" && \
