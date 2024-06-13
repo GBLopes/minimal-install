@@ -1,0 +1,182 @@
+Partições:
+512 MB - EFI ou /boot
+60 GB - /
+4 GB - Swap
+Resto - /home
+
+Opções de montagem: discard, noatime, nodiratime
+
+*** COMANDOS: ***
+
+vi /etc/apt/sources.list
+	-> comentar as fontes do tipo "-src"
+	-> adicionar as seguintes fontes de código: main contrib non-free non-free-firmware
+
+sudo apt update
+
+sudo apt install bash_completion curl gedit && source /etc/bash_completion
+
+Neovim:
+sudo mkdir /opt
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
+sudo echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> /root/.bashrc
+source ~/.bashrc
+sudo source /root/.bashrc
+
+nvim .bashrc
+-> Descomentar os comandos "alias" e "export" para tornar o bash mais amigável
+-> echo 'source /etc/bash_completion' >> ~/.bashrc
+-> sudo echo 'source /etc/bash_completion' >> /root/.bashrc
+-> source ~/.bashrc
+-> sudo source /root/.bashrc
+
+sudo apt install xorg
+
+sudo apt install xfce4
+
+sudo apt install xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager
+
+sudo apt install chromium-l10n && sudo dpkg-reconfigure locales && sudo locale-gen
+
+sudo apt remove xterm
+
+LibreOffice:
+	-> curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz
+	-> tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz
+	-> sudo dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb/DEBS/*.deb
+	-> curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz
+	-> tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR
+	-> sudo dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb
+
+sudo apt install ufw && sudo ufw enable && sudo ufw default deny incoming && sudo ufw default allow outgoing
+
+sudo apt install ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom
+
+Criar subvolumes para fazer backup em BTRFS:
+	Fazer boot no live CD do Linux Mint
+	Abrir o gerenciador de discos e montar a partição /
+	Para os seguintes arquivos, alterar o @rootfs para @
+		-> @rootfs/boot/grub/grub.cfg
+		-> @rootfs/etc/fstab
+	Desmontar a partição / e montar a partição /boot e substituir o texto no seguinte caminho:
+		-> /EFI/debian/grub.cfg
+	Desmontar a partição /boot
+	Montar novamente a partição / usando o seguinte comando:
+		-> mount -o subvolid=0 /dev/sda2 /mnt
+	Entrar na pasta que foi montada (/mnt) e renomear a pasta @rootfs para @:
+		-> sudo mv @rootfs @
+
+Colocar snapshots na inicialização do grub (grub-btrfs):
+	-> sudo apt install inotify-tools
+	-> git clone https://github.com/Antynea/grub-btrfs.git
+	-> make install
+	-> sudo /etc/grub.d/41_snapshots-btrfs
+	-> sudo update-grub
+	-> sudo systemctl edit --full grub-btrfsd
+		-> Alterar a seguinte linha: ExecStart=/usr/bin/grub-btrfsd --syslog --timeshift-auto
+	-> sudo systemctl enable grub-btrfsd
+	-> sudo systemctl restart grub-btrfsd 
+	OBS.: Sempre que precisar restaurar o sistema, não esquecer de restaurar o snapshot no Timeshift assim que logar
+
+***** TEMAS ******
+***** MAC OS THEME *******
+
+git clone https://www.opencode.net/lsteam/xfce-big-sur-setup-file.git
+
+trocar o wallpaper
+copiar o conteúdo da pasta fonts para a pasta ~/.local/share/fonts
+
+git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+	-> Entrar dentro da pasta e executar o arquivo install.sh
+
+git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
+	-> Entrar dentro da pasta e executar o arquivo install.sh
+
+git clone https://github.com/vinceliuice/WhiteSur-cursors.git
+	-> Entrar dentro da pasta e executar o arquivo install.sh
+
+Configurar Aparência:
+	-> Style: WhiteSur-Dark
+	-> Icons: WhiteSur-dark
+	-> Fonts:
+		Padrão: San Francisco Display Regular 10 (Alt: San Francisco Text Regular 11)
+		Mono: Iosevka Term Regular 10 (Alt: JetBrains Mono Regular 11)
+		Habilitar suavização
+		Hinting: Completo
+		Ordem de subpixel: Nenhum
+	-> Configurações:
+		Mostrar imagens nos botões
+		Mostrar imagens nos menus
+
+Window Manager:
+	-> Tema: WhiteSur-Dark
+	-> Fonte do título: San Francisco Display Medium 9 (Alt: San Francisco Text Medium 10)
+	-> Alinhamento do título: Centro
+	-> Botões ativos: Título, minimizar, ampliar, fechar
+
+Ordem dos itens no painel:
+	-> Menu Whisker (start-icon)
+	-> Separador
+	-> Alternador de espaço de trabalho
+	-> Separador (Expandir)
+	-> Plug-in da bandeja de status
+	-> Separador
+	-> Atualização Meteorológica
+	-> Separador
+	-> Disposição do teclado
+	-> Separador
+	-> Wavelan
+	-> Separador
+	-> Plug-in do PulseAudio
+	-> Separador
+	-> Plug-in Gerenciador de energia
+	-> Separador
+	-> Plug-in de Notificações
+	-> Separador
+	-> Relógio (formato: %a, %d/%m/%Y   %H:%M) (font: San Francisco Text Medium 10)
+	-> Separador
+	-> Mostrar área de trabalho
+	
+
+Alterar a aparência do gerenciador de áreas de trabalho
+	-> No nome do espaço de trabalho, procurar o círculo da fonte JetBrains Mono no gerenciador de fontes, copiar e colar
+	-> Aparência: Botões
+
+Configurar dock
+	-> Copiar o conteúdo da pasta WhiteSur-gtk-theme/src/other/plank/ para ~/.local/share/plank/themes/
+	-> plank --preferences
+		-> Tema: theme-Dark
+		-> Zoom do ícone: 130
+		-> Docklets: add lixeira
+	-> Add plank na inicialização (o comando pra iniciar é plank)
+
+picom (compositor)
+	-> copiar o arquivo xfce-big-sur-setup-file/update-xfce-bugsur/picom/picom.conf
+	-> colar em ~/.config/picom
+	-> comentar as seguintes linhas nesse arquivo:
+		inactive-opacity = 0.8
+		frame-opacity = 0.7
+		popup_menu = { opacity = 0.8; }
+		dropdown_menu = { opacity = 0.8; }
+	-> Add picom na inicialização (o comando pra iniciar é picom)
+
+Tela de login
+	-> sudo apt install lightdm-gtk-greeter-settings
+	-> Copiar os wallpapers para a pasta correta
+		-> sudo cp -R ~/Imagens/wallpapers /usr/share/backgrounds
+	-> sudo cp -r ~/.themes/ /usr/share/themes
+	-> sudo cp -r ~/.local/share/fonts/ /usr/share/fonts/
+	-> sudo cp -r ~/.local/share/icons/ /usr/share/icons/
+	-> sudo cp ~/.face /usr/share/pixmaps/faces/
+	-> Editar o arquivo /var/lib/AccountsService/users/guilherme
+		-> Alterar o BackgroundFile para alguma imagem da pasta /usr/share/backgrounds/wallpapers
+		-> Alterar o caminho do Icon para /usr/share/pixmaps/faces/.face
+	-> Substituir o arquivo lightd-gtk-greeter.conf no caminho /etc/lightdm/
+
+
+
+
+
+
