@@ -18,7 +18,7 @@ source "/home/$USER/.bashrc" && \
 source "/root/.bashrc" && \
 
 sed -i 's/#shopt/shopt/g' "/home/$USER/.bashrc" && \
-sed -i 's/#[/[/g' "/home/$USER/.bashrc" && \
+sed -i 's/#\[/\[/g' "/home/$USER/.bashrc" && \
 sed -i 's/#force_color/force_color/g' "/home/$USER/.bashrc" && \
 sed -i 's/#alias/alias/g' "/home/$USER/.bashrc" && \
 sed -i 's/#export/export/g' "/home/$USER/.bashrc" && \
