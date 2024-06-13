@@ -6,17 +6,30 @@ cd "/home/$USER" && \
 sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list && \
 sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list && \
 
-apt update && apt install -y bash-completion curl && source /etc/bash_completion && \
+apt update && apt install -y bash-completion curl && \
 
 # Neovim
 mkdir /opt && \
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && \
 tar -C /opt -xzf nvim-linux64.tar.gz && \
-rm nvim-linux64.tar.gz 
-echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/home/$USER/.bashrc" && \
-echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/root/.bashrc" && \
-source "/home/$USER/.bashrc" && \
-source "/root/.bashrc" && \
+rm nvim-linux64.tar.gz && \
+echo '
+if [[ ":$PATH:" != *":/opt/nvim-linux64/bin"* ]]; then
+    export PATH="$PATH:/opt/nvim-linux64/bin"
+fi
+' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+
+echo '
+if [[ ":$PATH:" != *":/sbin"* ]]; then
+    export PATH="$PATH:/sbin"
+fi
+' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+
+echo '
+if [[ ":$PATH:" != *":/usr/sbin"* ]]; then
+    export PATH="$PATH:/usr/sbin"
+fi
+' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
 
 sed -i 's/#shopt/shopt/g' "/home/$USER/.bashrc" && \
 sed -i 's/#\[/\[/g' "/home/$USER/.bashrc" && \
@@ -29,8 +42,6 @@ sed -i 's/# alias/alias/g' "/root/.bashrc" && \
 
 echo 'source /etc/bash_completion' >> "/home/$USER/.bashrc" && \
 echo 'source /etc/bash_completion' >> "/root/.bashrc" && \
-source "/home/$USER/.bashrc" && \
-source "/root/.bashrc" && \
 
 apt install -y xorg && \
 
@@ -40,24 +51,24 @@ apt install -y xfce4-goodies zip unzip rar unrar gzip chromium evince file-rolle
 
 apt install -y chromium-l10n && \
 
-#Rodar manualmente para configurar idioma do Chromium:
-
-#dpkg-reconfigure locales && locale-gen
-
 apt remove xterm && \
 
 #LibreOffice:
 curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
 tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
 dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb/DEBS/*.deb && \
+rm -rf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz LibreOffice_24.2.4_Linux_x86-64_deb && \
 curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
-tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR && \
+tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
 dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
+rm -rf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR && \
 
 apt install -y ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
 apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank
 
+#Rodar manualmente para configurar idioma do Chromium:
+#dpkg-reconfigure locales && locale-gen
 
 :`
 
@@ -181,6 +192,13 @@ Tela de login
 		-> Alterar o BackgroundFile para alguma imagem da pasta /usr/share/backgrounds/wallpapers
 		-> Alterar o caminho do Icon para /usr/share/pixmaps/faces/.face
 	-> Substituir o arquivo lightd-gtk-greeter.conf no caminho /etc/lightdm/
+
+
+
+
+
+
+
 
 
 
