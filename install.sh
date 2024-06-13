@@ -56,8 +56,8 @@ apt remove xterm && \
 #LibreOffice:
 curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
 tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
-dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb/DEBS/*.deb && \
-rm -rf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz LibreOffice_24.2.4_Linux_x86-64_deb && \
+dpkg -i LibreOffice_24.2.4.2_Linux_x86-64_deb/DEBS/*.deb && \
+rm -rf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz LibreOffice_24.2.4.2_Linux_x86-64_deb && \
 curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
 tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
 dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
@@ -65,7 +65,7 @@ rm -rf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz LibreOffice_24.
 
 apt install -y ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
-apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank
+apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank && \
 
 #Rodar manualmente para configurar idioma do Chromium:
 #dpkg-reconfigure locales && locale-gen
