@@ -51,7 +51,7 @@ dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
 
 apt install ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
-apt install ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom
+apt install ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom plank
 
 
 :`
