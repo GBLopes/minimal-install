@@ -1,28 +1,23 @@
-Partições:
-512 MB - EFI ou /boot
-60 GB - /
-4 GB - Swap
-Resto - /home
+#!/usr/bin/env bash
 
-Opções de montagem: discard, noatime, nodiratime
+cd "/home/$USER"
 
-*** COMANDOS: ***
-
+# Update sources list
 sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list
 sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list
 
-sudo apt update
+apt update
 
-sudo apt install bash_completion curl gedit && source /etc/bash_completion
+apt install bash_completion curl gedit && source /etc/bash_completion
 
-Neovim:
-sudo mkdir /opt
+# Neovim
+mkdir /opt
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
-sudo echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> /root/.bashrc
-source ~/.bashrc
-sudo source /root/.bashrc
+tar -C /opt -xzf nvim-linux64.tar.gz
+echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/home/$USER/.bashrc"
+echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "/root/.bashrc"
+source "/home/$USER/.bashrc"
+source "/root/.bashrc"
 
 sed -i 's/#shopt/shopt/g' "/home/$USER/.bashrc"
 sed -i 's/#[/[/g' "/home/$USER/.bashrc"
@@ -33,34 +28,35 @@ sed -i 's/# export/export/g' "/root/.bashrc"
 sed -i 's/# eval/eval/g' "/root/.bashrc"
 sed -i 's/# alias/alias/g' "/root/.bashrc"
 
-nvim .bashrc
--> Descomentar os comandos "alias" e "export" para tornar o bash mais amigável
--> echo 'source /etc/bash_completion' >> ~/.bashrc
--> sudo echo 'source /etc/bash_completion' >> /root/.bashrc
--> source ~/.bashrc
--> sudo source /root/.bashrc
+echo 'source /etc/bash_completion' >> "/home/$USER/.bashrc"
+echo 'source /etc/bash_completion' >> "/root/.bashrc"
+source "/home/$USER/.bashrc"
+source "/root/.bashrc"
 
-sudo apt install xorg
+apt install xorg
 
-sudo apt install xfce4
+apt install xfce4
 
-sudo apt install xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager
+apt install xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager
 
-sudo apt install chromium-l10n && sudo dpkg-reconfigure locales && sudo locale-gen
+apt install chromium-l10n && dpkg-reconfigure locales && locale-gen
 
-sudo apt remove xterm
+apt remove xterm
 
-LibreOffice:
-	-> curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz
-	-> tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz
-	-> sudo dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb/DEBS/*.deb
-	-> curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz
-	-> tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR
-	-> sudo dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb
+#LibreOffice:
+curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz
+tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz
+dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb/DEBS/*.deb
+curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz
+tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR
+dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb
 
-sudo apt install ufw && sudo ufw enable && sudo ufw default deny incoming && sudo ufw default allow outgoing
+apt install ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing
 
-sudo apt install ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom
+apt install ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono git htop neofetch mugshot picom
+
+
+:`
 
 Criar subvolumes para fazer backup em BTRFS:
 	Fazer boot no live CD do Linux Mint
@@ -74,18 +70,18 @@ Criar subvolumes para fazer backup em BTRFS:
 	Montar novamente a partição / usando o seguinte comando:
 		-> mount -o subvolid=0 /dev/sda2 /mnt
 	Entrar na pasta que foi montada (/mnt) e renomear a pasta @rootfs para @:
-		-> sudo mv @rootfs @
+		-> mv @rootfs @
 
 Colocar snapshots na inicialização do grub (grub-btrfs):
-	-> sudo apt install inotify-tools
+	-> apt install inotify-tools
 	-> git clone https://github.com/Antynea/grub-btrfs.git
 	-> make install
-	-> sudo /etc/grub.d/41_snapshots-btrfs
-	-> sudo update-grub
-	-> sudo systemctl edit --full grub-btrfsd
+	-> /etc/grub.d/41_snapshots-btrfs
+	-> update-grub
+	-> systemctl edit --full grub-btrfsd
 		-> Alterar a seguinte linha: ExecStart=/usr/bin/grub-btrfsd --syslog --timeshift-auto
-	-> sudo systemctl enable grub-btrfsd
-	-> sudo systemctl restart grub-btrfsd 
+	-> systemctl enable grub-btrfsd
+	-> systemctl restart grub-btrfsd 
 	OBS.: Sempre que precisar restaurar o sistema, não esquecer de restaurar o snapshot no Timeshift assim que logar
 
 ***** TEMAS ******
@@ -171,14 +167,14 @@ picom (compositor)
 	-> Add picom na inicialização (o comando pra iniciar é picom)
 
 Tela de login
-	-> sudo apt install lightdm-gtk-greeter-settings
+	-> apt install lightdm-gtk-greeter-settings
 	-> Copiar os wallpapers para a pasta correta
-		-> sudo cp -R ~/Imagens/wallpapers /usr/share/backgrounds
-	-> sudo cp -r ~/.themes/ /usr/share/themes
-	-> sudo cp -r ~/.local/share/fonts/ /usr/share/fonts/
-	-> sudo cp -r ~/.local/share/icons/ /usr/share/icons/
-	-> sudo cp ~/.face /usr/share/pixmaps/faces/
-	-> Editar o arquivo /var/lib/AccountsService/users/guilherme
+		-> cp -R ~/Imagens/wallpapers /usr/share/backgrounds
+	-> cp -r ~/.themes/ /usr/share/themes
+	-> cp -r ~/.local/share/fonts/ /usr/share/fonts/
+	-> cp -r ~/.local/share/icons/ /usr/share/icons/
+	-> cp ~/.face /usr/share/pixmaps/faces/
+	-> Editar o arquivo /var/lib/AccountsService/users/$USER
 		-> Alterar o BackgroundFile para alguma imagem da pasta /usr/share/backgrounds/wallpapers
 		-> Alterar o caminho do Icon para /usr/share/pixmaps/faces/.face
 	-> Substituir o arquivo lightd-gtk-greeter.conf no caminho /etc/lightdm/

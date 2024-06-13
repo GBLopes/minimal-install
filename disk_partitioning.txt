@@ -1,0 +1,10 @@
+##### PARTIÇÕES #####
+
+sda1 - 512 MB - EFI 
+sda2 - 512 MB - /boot (ext4)
+sda3 - LVM criptografado
+	/dev/mapper/main-raiz - 60 GB - / (btrfs)
+	/dev/mapper/main-swap - 4 GB - Swap
+	/dev/mapper/main-home - Resto - /home (ext4)
+
+Opções de montagem: discard, noatime, nodiratime
