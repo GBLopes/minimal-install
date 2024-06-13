@@ -8,7 +8,7 @@ sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list
 
 apt update
 
-apt install bash-completion curl gedit && source /etc/bash_completion
+apt install bash-completion curl && source /etc/bash_completion
 
 # Neovim
 mkdir /opt
