@@ -60,17 +60,17 @@ dpkg -i LibreOffice_24.2.4.2_Linux_x86-64_deb/DEBS/*.deb && \
 rm -rf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz LibreOffice_24.2.4.2_Linux_x86-64_deb && \
 curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
 tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
-dpkg -i LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
-rm -rf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR && \
+dpkg -i LibreOffice_24.2.4.2_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
+rm -rf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz LibreOffice_24.2.4.2_Linux_x86-64_deb_langpack_pt-BR && \
 
 apt install -y ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
-apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank && \
+apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank
 
 #Rodar manualmente para configurar idioma do Chromium:
 #dpkg-reconfigure locales && locale-gen
 
-:`
+:'
 
 Criar subvolumes para fazer backup em BTRFS:
 	Fazer boot no live CD do Linux Mint
@@ -192,7 +192,7 @@ Tela de login
 		-> Alterar o BackgroundFile para alguma imagem da pasta /usr/share/backgrounds/wallpapers
 		-> Alterar o caminho do Icon para /usr/share/pixmaps/faces/.face
 	-> Substituir o arquivo lightd-gtk-greeter.conf no caminho /etc/lightdm/
-
+'
 
 
 
