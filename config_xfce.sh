@@ -6,6 +6,7 @@ if [ "$(id -u)" == "0" ]; then
     exit 1
 fi && \
 
+chmod 755 /home/$USER && \
 
 mkdir -p "/home/$USER/.config/plank/dock1/launchers/" && \
 
