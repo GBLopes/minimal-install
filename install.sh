@@ -72,13 +72,19 @@ rm -rf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz LibreOffice_24.
 
 apt install -y ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
-apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank
+apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank && \
+
+# WIFI / BLUETOOTH
+apt install -y network-manager network-manager-gnome blueman && \
+sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf && \
+systemctl restart wpa_supplicant.service && \
+systemctl restart NetworkManager && \
 
 #Rodar manualmente para configurar idioma do Chromium:
 #dpkg-reconfigure locales && locale-gen
 
-***** TEMAS ******
-***** MAC OS THEME *******
+###### TEMAS
+###### MAC OS THEME
 
 git clone https://www.opencode.net/lsteam/xfce-big-sur-setup-file.git && \
 unzip xfce-big-sur-setup-file/update-xfce-bigsur.zip && \
