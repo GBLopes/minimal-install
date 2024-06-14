@@ -151,7 +151,7 @@ cp -R WhiteSur-gtk-theme/src/other/plank/* /usr/share/plank/themes && \
 # Verifica se o arquivo de inicialização automática do Plank já existe globalmente
 if [ ! -f /etc/xdg/autostart/plank.desktop ]; then
     # Cria o arquivo de inicialização automática do Plank globalmente
-    sudo tee /etc/xdg/autostart/plank.desktop > /dev/null <<EOF
+    tee /etc/xdg/autostart/plank.desktop > /dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Plank
@@ -186,16 +186,16 @@ cp update-xfce-bigsur/picom/picom.conf /usr/share/picom && \
 picom_conf="/usr/share/picom/picom.conf" && \
 
 # Comentar linhas específicas
-sudo sed -i 's/^inactive-opacity = 0.8/#inactive-opacity = 0.8/' "$picom_conf" && \
-sudo sed -i 's/^frame-opacity = 0.7/#frame-opacity = 0.7/' "$picom_conf" && \
-sudo sed -i 's/popup_menu = { opacity = 0.8; }/#popup_menu = { opacity = 0.8; }/' "$picom_conf" && \
-sudo sed -i 's/dropdown_menu = { opacity = 0.8; }/#dropdown_menu = { opacity = 0.8; }/' "$picom_conf" && \
+sed -i 's/^inactive-opacity = 0.8/#inactive-opacity = 0.8/' "$picom_conf" && \
+sed -i 's/^frame-opacity = 0.7/#frame-opacity = 0.7/' "$picom_conf" && \
+sed -i 's/popup_menu = { opacity = 0.8; }/#popup_menu = { opacity = 0.8; }/' "$picom_conf" && \
+sed -i 's/dropdown_menu = { opacity = 0.8; }/#dropdown_menu = { opacity = 0.8; }/' "$picom_conf" && \
 
 
 # Verifica se o arquivo de inicialização automática do Picom já existe globalmente
 if [ ! -f /etc/xdg/autostart/picom.desktop ]; then
     # Cria o arquivo de inicialização automática do Picom globalmente
-    sudo tee /etc/xdg/autostart/picom.desktop > /dev/null <<EOF
+    tee /etc/xdg/autostart/picom.desktop > /dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Picom
@@ -242,6 +242,9 @@ echo 'Tela de login
 #Copiando arquivos da pasta utils
 cp -r utils/plank/*.desktop /usr/share/applications && \
 cp -f utils/configs/lightdm-gtk-greeter.conf /etc/lightdm && \
+
+sed -i 's/#greeter-hide-users=false/greeter-hide-users=false/' /etc/lightdm/lightdm.conf && \
+sed -i 's/#allow-user-switching=true/allow-user-switching=true/' /etc/lightdm/lightdm.conf && \
 
 echo 'INSTALAÇÃO CONCLUÍDA COM SUCESSO!'
 

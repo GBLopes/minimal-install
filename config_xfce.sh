@@ -13,4 +13,8 @@ cp -R -f utils/plank/*.dockitem "/home/$USER/.config/plank/dock1/launchers" && \
 
 cp -R -f utils/configs/xfce4/* "/home/$USER/.config/xfce4" && \
 
+mkdir "/home/$USER/.config/picom" && \
+
+cp update-xfce-bigsur/picom/picom.conf "/home/$USER/.config/picom" && \
+
 echo 'Configuração do ambiente xfce concluída!'
