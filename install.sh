@@ -178,20 +178,6 @@ Configurar dock
 	-> Add plank na inicialização (o comando pra iniciar é plank)
 ' && \
 
-
-mkdir /usr/share/picom && \
-cp update-xfce-bigsur/picom/picom.conf /usr/share/picom && \
-
-# Arquivo picom.conf
-picom_conf="/usr/share/picom/picom.conf" && \
-
-# Comentar linhas específicas
-sed -i 's/^inactive-opacity = 0.8/#inactive-opacity = 0.8/' "$picom_conf" && \
-sed -i 's/^frame-opacity = 0.7/#frame-opacity = 0.7/' "$picom_conf" && \
-sed -i 's/popup_menu = { opacity = 0.8; }/#popup_menu = { opacity = 0.8; }/' "$picom_conf" && \
-sed -i 's/dropdown_menu = { opacity = 0.8; }/#dropdown_menu = { opacity = 0.8; }/' "$picom_conf" && \
-
-
 # Verifica se o arquivo de inicialização automática do Picom já existe globalmente
 if [ ! -f /etc/xdg/autostart/picom.desktop ]; then
     # Cria o arquivo de inicialização automática do Picom globalmente
