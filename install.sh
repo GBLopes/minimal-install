@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+# Verifica se o usuário atual é root
+if [ "$(id -u)" != "0" ]; then
+    echo "Este script precisa ser executado como root. Por favor, execute-o com permissões de root."
+    exit 1
+fi && \
+
 # Desativar beep
-echo "blacklist pcspkr" | tee "/etc/modprobe.d/nobeep.conf" > /dev/null
+echo "blacklist pcspkr" | tee "/etc/modprobe.d/nobeep.conf" > /dev/null && \
 
 # Update sources list
 sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list && \
@@ -76,7 +82,6 @@ apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrai
 
 git clone https://www.opencode.net/lsteam/xfce-big-sur-setup-file.git && \
 unzip xfce-big-sur-setup-file/update-xfce-bigsur.zip && \
-cp -R update-xfce-bigsur/fonts/ "/home/$USER/.local/share/fonts/" && \
 cp -R update-xfce-bigsur/fonts/ "/usr/share/" && \
 cp -R update-xfce-bigsur/wallpapers/ "/usr/share/backgrounds/" && \
 
@@ -235,15 +240,8 @@ echo 'Tela de login
 ' && \
 
 #Copiando arquivos da pasta utils
-
-mkdir -p /home/$USER/.config/plank/dock1/launchers/ && \
-
 cp -r utils/plank/*.desktop /usr/share/applications && \
-cp -r utils/plank/*.dockitem /home/$USER/.config/plank/dock1/launchers && \
-
 cp -f utils/configs/lightdm-gtk-greeter.conf /etc/lightdm && \
-
-cp -r -f utils/configs/xfce4/* /home/$USER/.config/xfce4 && \
 
 echo 'INSTALAÇÃO CONCLUÍDA COM SUCESSO!'
 
