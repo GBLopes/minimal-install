@@ -6,6 +6,27 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi && \
 
+echo '
+if [[ ":$PATH:" != *":/sbin"* ]]; then
+    export PATH="$PATH:/sbin"
+fi
+' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+
+echo '
+if [[ ":$PATH:" != *":/usr/sbin"* ]]; then
+    export PATH="$PATH:/usr/sbin"
+fi
+' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+
+source '/root/.bashrc' && \
+
+# Verifica se o diretório /opt existe
+if [ ! -d "/opt" ]; then
+    echo "Pasta /opt não existe, criando..."
+    mkdir -p /opt
+fi && \
+
+
 # Desativar beep
 echo "blacklist pcspkr" | tee "/etc/modprobe.d/nobeep.conf" > /dev/null && \
 
@@ -16,25 +37,12 @@ sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list && \
 apt update && apt install -y bash-completion curl && \
 
 # Neovim
-mkdir /opt && \
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && \
 tar -C /opt -xzf nvim-linux64.tar.gz && \
 rm nvim-linux64.tar.gz && \
 echo '
 if [[ ":$PATH:" != *":/opt/nvim-linux64/bin"* ]]; then
     export PATH="$PATH:/opt/nvim-linux64/bin"
-fi
-' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
-
-echo '
-if [[ ":$PATH:" != *":/sbin"* ]]; then
-    export PATH="$PATH:/sbin"
-fi
-' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
-
-echo '
-if [[ ":$PATH:" != *":/usr/sbin"* ]]; then
-    export PATH="$PATH:/usr/sbin"
 fi
 ' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
 
@@ -58,7 +66,7 @@ apt install -y xfce4-goodies zip unzip rar unrar gzip chromium evince file-rolle
 
 apt install -y chromium-l10n && \
 
-apt remove xterm && \
+apt remove -y xterm && \
 
 #LibreOffice:
 curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \

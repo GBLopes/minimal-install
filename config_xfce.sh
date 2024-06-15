@@ -12,7 +12,15 @@ mkdir -p "/home/$USER/.config/plank/dock1/launchers/" && \
 
 cp -R -f utils/plank/*.dockitem "/home/$USER/.config/plank/dock1/launchers" && \
 
-cp -R -f utils/configs/xfce4/* "/home/$USER/.config/xfce4" && \
+# Verifica se o diretório ~/.config/xfce4 existe para o usuário atual
+xfce4_dir="/home/$USER/.config/xfce4" && \
+
+if [ ! -d "$xfce4_dir" ]; then
+    echo "Pasta $xfce4_dir não existe para o usuário $USER, criando..."
+    mkdir -p "$xfce4_dir"
+fi && \
+
+cp -R -f utils/configs/xfce4/* "$xfce4_dir" && \
 
 mkdir "/home/$USER/.config/picom" && \
 
