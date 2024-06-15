@@ -26,7 +26,7 @@ make install -C grub-btrfs && \
 /etc/grub.d/41_snapshots-btrfs && \
 rm -rf grub-btrfs && \
 update-grub && \
-sed -i 's/\/.snapshots/--timeshift-auto/g' /etc/systemd/system/grub-btrfsd.service && \
+sed -i 's/\/.snapshots/--timeshift-auto/g' /lib/systemd/system/grub-btrfsd.service && \
 systemctl daemon-reload && \
 systemctl enable grub-btrfsd && \
 systemctl restart grub-btrfsd
