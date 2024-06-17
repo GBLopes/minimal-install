@@ -62,11 +62,11 @@ apt install -y xorg && \
 
 apt install -y xfce4 && \
 
-apt install -y xfce4-goodies zip unzip rar unrar gzip chromium evince file-roller menulibre celluloid font-manager && \
+apt install -y xfce4-battery-plugin xfce4-datetime-plugin xfce4-weather-plugin xfce4-xkb-plugin thunar-archive-plugin thunar-media-tags-plugin xfce4-whiskermenu-plugin xfce4-notifyd xfce4-screenshooter xfce4-taskmanager xfce4-power-manager && \
 
-apt install -y chromium-l10n && \
+apt install -y ristretto alacritty zip unzip rar unrar gzip firefox-esr okular gedit file-roller menulibre celluloid font-manager && \
 
-apt remove -y xterm && \
+apt remove -y xterm imagemagick imagemagick-6-common imagemagick-6.q16 && \
 
 #LibreOffice:
 curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
