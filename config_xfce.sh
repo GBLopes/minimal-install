@@ -31,4 +31,8 @@ if [ ! -d "$HOME/Applications" ]; then
     mkdir -p "$HOME/Applications"
 fi && \
 
+# VSCodium
+curl -LO 'https://github.com/VSCodium/vscodium/releases/download/1.90.1.24165/VSCodium-1.90.1.24165.glibc2.18-x86_64.AppImage' && \
+mv 'VSCodium-1.90.1.24165.glibc2.18-x86_64.AppImage' $HOME/Applications && \
+
 echo 'Configuração do ambiente xfce concluída!'
