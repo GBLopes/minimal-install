@@ -68,6 +68,11 @@ apt install -y ristretto alacritty zip unzip rar unrar gzip firefox-esr okular g
 
 apt remove -y xterm imagemagick imagemagick-6-common imagemagick-6.q16 && \
 
+# AppImage Launcher
+curl -LO 'https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb' && \
+dpkg -i appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb && \
+rm -f appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb && \
+
 # Qalculate
 curl -LO 'https://github.com/Qalculate/libqalculate/releases/download/v5.1.1/qalculate-5.1.1-x86_64.tar.xz' && \
 tar -xvf qalculate-5.1.1-x86_64.tar.xz && rm qalculate-5.1.1-x86_64.tar.xz && \
@@ -87,7 +92,7 @@ rm -rf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz LibreOffice_24.
 
 apt install -y ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
-apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank && \
+apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank rclone && \
 
 # WIFI / BLUETOOTH
 apt install -y network-manager network-manager-gnome blueman && \

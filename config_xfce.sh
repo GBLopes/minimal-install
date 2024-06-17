@@ -26,4 +26,9 @@ mkdir "/home/$USER/.config/picom" && \
 
 cp utils/configs/picom/picom.conf "/home/$USER/.config/picom" && \
 
+if [ ! -d "$HOME/Applications" ]; then
+    echo "Pasta Applications não existe para o usuário $USER, criando..."
+    mkdir -p "$HOME/Applications"
+fi && \
+
 echo 'Configuração do ambiente xfce concluída!'
