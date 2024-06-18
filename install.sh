@@ -101,12 +101,6 @@ apt install -y ufw && ufw enable && ufw default deny incoming && ufw default all
 
 apt install -y ttf-mscorefonts-installer timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank rclone && \
 
-# WIFI / BLUETOOTH
-apt install -y network-manager network-manager-gnome blueman && \
-sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf && \
-systemctl restart wpa_supplicant.service && \
-systemctl restart NetworkManager && \
-
 # Zellij
 curl -LO 'https://github.com/zellij-org/zellij/releases/download/v0.40.1/zellij-x86_64-unknown-linux-musl.tar.gz' && \
 tar -xf 'zellij-x86_64-unknown-linux-musl.tar.gz' && \
@@ -276,18 +270,6 @@ cp -f utils/configs/lightdm-gtk-greeter.conf /etc/lightdm && \
 sed -i 's/#greeter-hide-users=false/greeter-hide-users=false/' /etc/lightdm/lightdm.conf && \
 sed -i 's/#allow-user-switching=true/allow-user-switching=true/' /etc/lightdm/lightdm.conf && \
 
-#GRUB Catpuccin theme
-if [ ! -d "/usr/share/grub/themes" ]; then
-    echo "Criando pasta /usr/share/grub/themes..."
-    mkdir -p "/usr/share/grub/themes"
-fi && \
-git clone https://github.com/catppuccin/grub.git && cd grub && \
-cp -r src/* /usr/share/grub/themes/ && \
-echo '
-GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
-' | tee -a '/etc/default/grub' && \
-update-grub && \
-
 # Alacritty Catpuccin theme
 if [ ! -d "$HOME/.config/alacritty" ]; then
     echo "Criando pasta $HOME/.config/alacritty..."
@@ -295,13 +277,27 @@ if [ ! -d "$HOME/.config/alacritty" ]; then
 fi && \
 cp utils/configs/alacritty/alacritty.yml $HOME/.config/alacritty && \
 
+#GRUB Catpuccin theme
+if [ ! -d "/usr/share/grub/themes" ]; then
+    echo "Criando pasta /usr/share/grub/themes..."
+    mkdir -p "/usr/share/grub/themes"
+fi && \
+git clone https://github.com/catppuccin/grub.git && \
+cp -r grub/src/* /usr/share/grub/themes/ && \
+echo '
+GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
+' | tee -a '/etc/default/grub' && \
+update-grub && \
+
 #Gedit Catpuccin theme
-clone https://github.com/catppuccin/gedit.git && \
+git clone https://github.com/catppuccin/gedit.git && \
 cd gedit && \
 ./install.sh && \
+cd .. && \
+rm -rf gedit && \
 
 # Define ZSH as default shell
-cp utils/.zshrc $HOME/.zshrc && \
+cp "utils/.zshrc" "$HOME/.zshrc" && \
 chsh -s /bin/zsh && \
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k && \
 

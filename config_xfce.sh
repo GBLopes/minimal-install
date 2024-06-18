@@ -48,16 +48,16 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 #Kickstart Neovim
 git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim && \
 
-#Gedit Catpuccin theme
-clone https://github.com/catppuccin/gedit.git && \
-cd gedit && \
-./install.sh && \
-
 # Alacritty Catpuccin theme
 if [ ! -d "$HOME/.config/alacritty" ]; then
     echo "Criando pasta $HOME/.config/alacritty..."
     mkdir -p "$HOME/.config/alacritty"
 fi && \
 cp utils/configs/alacritty/alacritty.yml $HOME/.config/alacritty && \
+
+#Gedit Catpuccin theme
+git clone https://github.com/catppuccin/gedit.git && \
+cd gedit && \
+./install.sh && \
 
 echo 'Configuração do ambiente xfce concluída!'
