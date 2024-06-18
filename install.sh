@@ -33,7 +33,7 @@ echo "blacklist pcspkr" | tee "/etc/modprobe.d/nobeep.conf" > /dev/null && \
 sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list && \
 sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list && \
 
-apt update && apt install -y bash-completion curl build-essential && \
+apt update && apt install -y bash-completion curl build-essential cmake && \
 
 # Zsh
 apt install -y zsh zplug ripgrep xclip && \
