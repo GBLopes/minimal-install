@@ -286,6 +286,7 @@ cp -r src/* /usr/share/grub/themes/ && \
 echo '
 GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
 ' | tee -a '/etc/default/grub' && \
+update-grub && \
 
 # Alacritty Catpuccin theme
 if [ ! -d "$HOME/.config/alacritty" ]; then
