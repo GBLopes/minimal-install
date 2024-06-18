@@ -33,7 +33,7 @@ echo "blacklist pcspkr" | tee "/etc/modprobe.d/nobeep.conf" > /dev/null && \
 sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list && \
 sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list && \
 
-apt update && apt install -y bash-completion curl && \
+apt update && apt install -y bash-completion curl build-essential && \
 
 # Zsh
 apt install -y zsh zplug ripgrep xclip && \
@@ -99,7 +99,7 @@ rm -rf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz LibreOffice_24.
 
 apt install -y ufw && ufw enable && ufw default deny incoming && ufw default allow outgoing && \
 
-apt install -y ttf-mscorefonts-installer build-essential timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank rclone && \
+apt install -y ttf-mscorefonts-installer timeshift fonts-jetbrains-mono htop neofetch mugshot picom plank rclone && \
 
 # WIFI / BLUETOOTH
 apt install -y network-manager network-manager-gnome blueman && \
