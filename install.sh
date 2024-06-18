@@ -26,7 +26,6 @@ if [ ! -d "/opt" ]; then
     mkdir -p /opt
 fi && \
 
-
 # Desativar beep
 echo "blacklist pcspkr" | tee "/etc/modprobe.d/nobeep.conf" > /dev/null && \
 
@@ -35,6 +34,11 @@ sed -i 's/deb-src/#deb-src/g' /etc/apt/sources.list && \
 sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list && \
 
 apt update && apt install -y bash-completion curl && \
+
+# Zsh
+apt install -y zsh zplug ripgrep xclip && \
+cp -r 'utils/fonts/MesloLGS NF' /usr/share/fonts && \
+cp -r 'utils/fonts/JetBrainsMono Nerd Font' /usr/share/fonts && \
 
 # Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && \
@@ -45,6 +49,9 @@ if [[ ":$PATH:" != *":/opt/nvim-linux64/bin"* ]]; then
     export PATH="$PATH:/opt/nvim-linux64/bin"
 fi
 ' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+
+#Kickstart Neovim
+git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim && \
 
 sed -i 's/#shopt/shopt/g' "/home/$USER/.bashrc" && \
 sed -i 's/#\[/\[/g' "/home/$USER/.bashrc" && \
@@ -99,6 +106,17 @@ apt install -y network-manager network-manager-gnome blueman && \
 sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf && \
 systemctl restart wpa_supplicant.service && \
 systemctl restart NetworkManager && \
+
+# Zellij
+curl -LO 'https://github.com/zellij-org/zellij/releases/download/v0.40.1/zellij-x86_64-unknown-linux-musl.tar.gz' && \
+tar -xf 'zellij-x86_64-unknown-linux-musl.tar.gz' && \
+rm zellij-x86_64-unknown-linux-musl.tar.gz && \
+mkdir /opt/zellij && mv zellij /opt/zellij && \
+echo '
+if [[ ":$PATH:" != *":/opt/zellij"* ]]; then
+    export PATH="$PATH:/opt/zellij"
+fi
+' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
 
 #Rodar manualmente para configurar idioma do Chromium:
 #dpkg-reconfigure locales && locale-gen
@@ -257,6 +275,34 @@ cp -f utils/configs/lightdm-gtk-greeter.conf /etc/lightdm && \
 
 sed -i 's/#greeter-hide-users=false/greeter-hide-users=false/' /etc/lightdm/lightdm.conf && \
 sed -i 's/#allow-user-switching=true/allow-user-switching=true/' /etc/lightdm/lightdm.conf && \
+
+#GRUB Catpuccin theme
+if [ ! -d "/usr/share/grub/themes" ]; then
+    echo "Criando pasta /usr/share/grub/themes..."
+    mkdir -p "/usr/share/grub/themes"
+fi && \
+git clone https://github.com/catppuccin/grub.git && cd grub && \
+cp -r src/* /usr/share/grub/themes/ && \
+echo '
+GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
+' | tee -a '/etc/default/grub' && \
+
+# Alacritty Catpuccin theme
+if [ ! -d "$HOME/.config/alacritty" ]; then
+    echo "Criando pasta $HOME/.config/alacritty..."
+    mkdir -p "$HOME/.config/alacritty"
+fi && \
+cp utils/configs/alacritty/alacritty.yml $HOME/.config/alacritty && \
+
+#Gedit Catpuccin theme
+clone https://github.com/catppuccin/gedit.git && \
+cd gedit && \
+./install.sh && \
+
+# Define ZSH as default shell
+cp utils/.zshrc $HOME/.zshrc && \
+chsh -s /bin/zsh && \
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k && \
 
 echo 'INSTALAÇÃO CONCLUÍDA COM SUCESSO!'
 

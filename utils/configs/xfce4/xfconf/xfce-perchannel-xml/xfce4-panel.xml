@@ -50,7 +50,7 @@
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chromium.instance2344;chromium.instance5092;io.github.celluloid_player.Celluloid.instance-1"/>
+      <property name="mpris-players" type="string" value="chromium.instance2344;chromium.instance5092;firefox.instance3679;io.github.celluloid_player.Celluloid.instance-1"/>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
@@ -79,6 +79,8 @@
     </property>
     <property name="plugin-23" type="string" value="systray">
       <property name="known-legacy-items" type="array">
+        <value type="string" value="conexão de rede ethernet “ifupdown (enp0s3)” ativa"/>
+        <value type="string" value="conexão de rede ethernet “enp0s3” ativa"/>
         <value type="string" value="nenhuma conexão de rede"/>
         <value type="string" value="miniaplicativo gerenciador de redes"/>
       </property>

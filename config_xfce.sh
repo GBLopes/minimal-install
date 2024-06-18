@@ -31,8 +31,33 @@ if [ ! -d "$HOME/Applications" ]; then
     mkdir -p "$HOME/Applications"
 fi && \
 
+# Helix
+#curl -LO 'https://github.com/helix-editor/helix/releases/download/24.03/helix-24.03-x86_64.AppImage' && \
+#chmod +x helix-24.03-x86_64.AppImage && \
+#mv helix-24.03-x86_64.AppImage $HOME/Applications/ && \
+
 # VSCodium
 curl -LO 'https://github.com/VSCodium/vscodium/releases/download/1.90.1.24165/VSCodium-1.90.1.24165.glibc2.18-x86_64.AppImage' && \
 mv 'VSCodium-1.90.1.24165.glibc2.18-x86_64.AppImage' $HOME/Applications && \
+
+# ZSH
+cp utils/.zshrc $HOME/.zshrc && \
+chsh -s /bin/zsh && \
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k && \
+
+#Kickstart Neovim
+git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim && \
+
+#Gedit Catpuccin theme
+clone https://github.com/catppuccin/gedit.git && \
+cd gedit && \
+./install.sh && \
+
+# Alacritty Catpuccin theme
+if [ ! -d "$HOME/.config/alacritty" ]; then
+    echo "Criando pasta $HOME/.config/alacritty..."
+    mkdir -p "$HOME/.config/alacritty"
+fi && \
+cp utils/configs/alacritty/alacritty.yml $HOME/.config/alacritty && \
 
 echo 'Configuração do ambiente xfce concluída!'
