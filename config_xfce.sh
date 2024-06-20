@@ -38,7 +38,7 @@ sed -i 's/#force_color/force_color/g' "$HOME/.bashrc" && \
 sed -i 's/#alias/alias/g' "$HOME/.bashrc" && \
 sed -i 's/#export/export/g' "$HOME/.bashrc" && \
 
-source '/root/.bashrc' && \
+source "$HOME/.bashrc" && \
 
 mkdir -p "/home/$USER/.config/plank/dock1/launchers/" && \
 
