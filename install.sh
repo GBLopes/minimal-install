@@ -10,13 +10,13 @@ echo '
 if [[ ":$PATH:" != *":/sbin"* ]]; then
     export PATH="$PATH:/sbin"
 fi
-' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+' | tee -a "$HOME/.bashrc" && \
 
 echo '
 if [[ ":$PATH:" != *":/usr/sbin"* ]]; then
     export PATH="$PATH:/usr/sbin"
 fi
-' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+' | tee -a "$HOME/.bashrc" && \
 
 source '/root/.bashrc' && \
 
@@ -48,21 +48,15 @@ echo '
 if [[ ":$PATH:" != *":/opt/nvim-linux64/bin"* ]]; then
     export PATH="$PATH:/opt/nvim-linux64/bin"
 fi
-' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+' | tee -a "$HOME/.bashrc" && \
 
 #Kickstart Neovim
 git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim && \
 
-sed -i 's/#shopt/shopt/g' "/home/$USER/.bashrc" && \
-sed -i 's/#\[/\[/g' "/home/$USER/.bashrc" && \
-sed -i 's/#force_color/force_color/g' "/home/$USER/.bashrc" && \
-sed -i 's/#alias/alias/g' "/home/$USER/.bashrc" && \
-sed -i 's/#export/export/g' "/home/$USER/.bashrc" && \
 sed -i 's/# export/export/g' "/root/.bashrc" && \
 sed -i 's/# eval/eval/g' "/root/.bashrc" && \
 sed -i 's/# alias/alias/g' "/root/.bashrc" && \
 
-echo 'source /etc/bash_completion' >> "/home/$USER/.bashrc" && \
 echo 'source /etc/bash_completion' >> "/root/.bashrc" && \
 
 apt install -y xorg && \
@@ -88,10 +82,11 @@ cp utils/qalculate/qalculate.svg /usr/share/icons && \
 cp utils/qalculate/qalculate-gtk.desktop /usr/share/applications && \
 
 #LibreOffice:
-curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
-tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
-dpkg -i LibreOffice_24.2.4.2_Linux_x86-64_deb/DEBS/*.deb && \
-rm -rf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz LibreOffice_24.2.4.2_Linux_x86-64_deb && \
+#curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
+#tar -xf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz && \
+#dpkg -i LibreOffice_24.2.4.2_Linux_x86-64_deb/DEBS/*.deb && \
+#rm -rf LibreOffice_24.2.4_Linux_x86-64_deb.tar.gz LibreOffice_24.2.4.2_Linux_x86-64_deb && \
+apt install -y libreoffice && \
 curl -LO https://download.documentfoundation.org/libreoffice/stable/24.2.4/deb/x86_64/LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
 tar -xf LibreOffice_24.2.4_Linux_x86-64_deb_langpack_pt-BR.tar.gz && \
 dpkg -i LibreOffice_24.2.4.2_Linux_x86-64_deb_langpack_pt-BR/DEBS/*.deb && \
@@ -110,7 +105,7 @@ echo '
 if [[ ":$PATH:" != *":/opt/zellij"* ]]; then
     export PATH="$PATH:/opt/zellij"
 fi
-' | tee -a "/home/$USER/.bashrc" "/root/.bashrc" && \
+' | tee -a "$HOME/.bashrc" && \
 
 #Rodar manualmente para configurar idioma do Chromium:
 #dpkg-reconfigure locales && locale-gen

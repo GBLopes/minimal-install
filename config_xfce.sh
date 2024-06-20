@@ -8,6 +8,38 @@ fi && \
 
 chmod 755 /home/$USER && \
 
+echo '
+if [[ ":$PATH:" != *":/sbin"* ]]; then
+    export PATH="$PATH:/sbin"
+fi
+' | tee -a "$HOME/.bashrc" && \
+
+echo '
+if [[ ":$PATH:" != *":/usr/sbin"* ]]; then
+    export PATH="$PATH:/usr/sbin"
+fi
+' | tee -a "$HOME/.bashrc" && \
+
+echo '
+if [[ ":$PATH:" != *":/opt/nvim-linux64/bin"* ]]; then
+    export PATH="$PATH:/opt/nvim-linux64/bin"
+fi
+' | tee -a "$HOME/.bashrc" && \
+
+echo '
+if [[ ":$PATH:" != *":/opt/zellij"* ]]; then
+    export PATH="$PATH:/opt/zellij"
+fi
+' | tee -a "$HOME/.bashrc" && \
+
+sed -i 's/#shopt/shopt/g' "$HOME/.bashrc" && \
+sed -i 's/#\[/\[/g' "$HOME/.bashrc" && \
+sed -i 's/#force_color/force_color/g' "$HOME/.bashrc" && \
+sed -i 's/#alias/alias/g' "$HOME/.bashrc" && \
+sed -i 's/#export/export/g' "$HOME/.bashrc" && \
+
+source '/root/.bashrc' && \
+
 mkdir -p "/home/$USER/.config/plank/dock1/launchers/" && \
 
 cp -R -f utils/plank/*.dockitem "/home/$USER/.config/plank/dock1/launchers" && \
