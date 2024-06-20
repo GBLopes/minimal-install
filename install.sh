@@ -65,7 +65,9 @@ apt install -y xfce4 && \
 
 apt install -y xfce4-battery-plugin xfce4-datetime-plugin xfce4-weather-plugin xfce4-xkb-plugin thunar-archive-plugin thunar-media-tags-plugin xfce4-whiskermenu-plugin xfce4-notifyd xfce4-screenshooter xfce4-taskmanager xfce4-power-manager && \
 
-apt install -y ristretto alacritty zip unzip rar unrar gzip firefox-esr okular gedit drawing gnome-clocks file-roller menulibre celluloid font-manager && \
+apt install -y ristretto alacritty zip unzip rar unrar gzip firefox-esr gedit drawing gnome-clocks file-roller menulibre celluloid font-manager && \
+
+apt install -y okular --no-install-recommends && \
 
 apt remove -y xterm imagemagick imagemagick-6-common imagemagick-6.q16 && \
 
