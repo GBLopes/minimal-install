@@ -69,8 +69,8 @@ fi && \
 #mv helix-24.03-x86_64.AppImage $HOME/Applications/ && \
 
 # VSCodium
-curl -LO 'https://github.com/VSCodium/vscodium/releases/download/1.90.1.24165/VSCodium-1.90.1.24165.glibc2.18-x86_64.AppImage' && \
-mv 'VSCodium-1.90.1.24165.glibc2.18-x86_64.AppImage' $HOME/Applications && \
+#curl -LO 'https://github.com/VSCodium/vscodium/releases/download/1.90.1.24165/VSCodium-1.90.1.24165.glibc2.18-x86_64.AppImage' && \
+#mv 'VSCodium-1.90.1.24165.glibc2.18-x86_64.AppImage' $HOME/Applications && \
 
 # ZSH
 cp utils/.zshrc $HOME/.zshrc && \
