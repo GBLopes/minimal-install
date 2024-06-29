@@ -23,7 +23,7 @@ else
 fi && \
 
 echo "${GREEN}Adicionando aplicações para uso na dock...${NC}" && \
-cp -r utils/plank/*.desktop /usr/share/applications
+cp -r assets/plank/*.desktop /usr/share/applications
 
 # Configurar dock
 # 	-> Copiar o conteúdo da pasta WhiteSur-gtk-theme/src/other/plank/ para ~/.local/share/plank/themes/
