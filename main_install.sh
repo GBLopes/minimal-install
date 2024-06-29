@@ -68,11 +68,11 @@ echo "${GREEN}Configurando zsh...${NC}" && \
 
 # Jetbrains Mono Nerd Font
 echo "${GREEN}Instalando JetBrainsMono Nerd Font...${NC}" && \
-cp -r '/assets/fonts/JetBrainsMono Nerd Font' /usr/share/fonts && \
+cp -r 'assets/fonts/JetBrainsMono Nerd Font' /usr/share/fonts && \
 
 # MesloLGS
 echo "${GREEN}Instalando MesloLGS NF...${NC}" && \
-cp -r '/assets/fonts/MesloLGS NF' /usr/share/fonts && \
+cp -r 'assets/fonts/MesloLGS NF' /usr/share/fonts && \
 
 # Neovim
 echo "${GREEN}Instalando Neovim...${NC}" && \
