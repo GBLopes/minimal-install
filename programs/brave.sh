@@ -6,4 +6,4 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 
 apt update && \
 
-apt install brave-browser
+apt install -y brave-browser
