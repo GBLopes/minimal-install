@@ -275,7 +275,7 @@ echo -e "${GREEN}Instalando plank...${NC}" && \
 
 # lightdm-gtk-greeter
 echo -e "${GREEN}Configurando lightdm-gtk-greeter...${NC}" && \
-cp -f utils/configs/lightdm-gtk-greeter.conf /etc/lightdm && \
+cp -f assets/configs/lightdm-gtk-greeter.conf /etc/lightdm && \
 
 #lightdm.conf
 echo -e "${GREEN}Configurando lightdm.conf...${NC}" && \
