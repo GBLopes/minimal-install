@@ -216,10 +216,6 @@ echo -e "${GREEN}Instalando mugshot...${NC}" && \
 echo -e "${GREEN}Instalando picom...${NC}" && \
 ./programs/picom.sh && \
 
-# plank
-echo -e "${GREEN}Instalando plank...${NC}" && \
-./programs/plank.sh && \
-
 # rclone
 echo -e "${GREEN}Instalando rclone...${NC}" && \
 ./programs/rclone.sh && \
@@ -272,6 +268,10 @@ echo -e "${GREEN}Instalando WhiteSur-icon-theme...${NC}" && \
 # WhiteSur-cursors
 echo -e "${GREEN}Instalando WhiteSur-cursors...${NC}" && \
 ./theme/whitesur_cursors.sh && \
+
+# plank
+echo -e "${GREEN}Instalando plank...${NC}" && \
+./programs/plank.sh && \
 
 # lightdm-gtk-greeter
 echo -e "${GREEN}Configurando lightdm-gtk-greeter...${NC}" && \
