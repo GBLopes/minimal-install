@@ -12,19 +12,19 @@ NC='\033[0m' && \
 # WIFI / BLUETOOTH
 
 # network-manager
-echo "${GREEN}Instalando network-manager...${NC}" && \
+echo -e "${GREEN}Instalando network-manager...${NC}" && \
 apt install -y network-manager && \
 
 # network-manager-gnome
-echo "${GREEN}Instalando network-manager-gnome...${NC}" && \
+echo -e "${GREEN}Instalando network-manager-gnome...${NC}" && \
 apt install -y network-manager-gnome && \
 
 # blueman
-echo "${GREEN}Instalando blueman...${NC}" && \
+echo -e "${GREEN}Instalando blueman...${NC}" && \
 apt install -y blueman && \
 
 # config NetworkManager
-echo "${GREEN}Configurando NetworkManager...${NC}" && \
+echo -e "${GREEN}Configurando NetworkManager...${NC}" && \
 sed -i 's/managed=false/managed=true/g' /etc/NetworkManager/NetworkManager.conf && \
 systemctl restart wpa_supplicant.service && \
 systemctl restart NetworkManager

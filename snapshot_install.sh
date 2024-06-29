@@ -25,30 +25,30 @@ GREEN='\033[0;32m' &&\
 NC='\033[0m' && \
 
 # Configurar criação de snapshots automática
-echo "${GREEN}Iniciando configuração de snapshots automáticos via grub...${NC}" && \
+echo -e "${GREEN}Iniciando configuração de snapshots automáticos via grub...${NC}" && \
 
 # inotify-tools
-echo "${GREEN}Instalando inotify-tools...${NC}" && \
+echo -e "${GREEN}Instalando inotify-tools...${NC}" && \
 apt install -y inotify-tools && \
 
 # grub-btrfs
-echo "${GREEN}Instalando grub-btrfs...${NC}" && \
+echo -e "${GREEN}Instalando grub-btrfs...${NC}" && \
 git clone https://github.com/Antynea/grub-btrfs.git && \
 make install -C grub-btrfs && \
 /etc/grub.d/41_snapshots-btrfs && \
 rm -rf grub-btrfs && \
 
 # update-grub
-echo "${GREEN}update-grub...${NC}" && \
+echo -e "${GREEN}update-grub...${NC}" && \
 update-grub && \
 
 # config grub-btrfsd.service
-echo "${GREEN}Configurando grub-btrfsd.service...${NC}" && \
+echo -e "${GREEN}Configurando grub-btrfsd.service...${NC}" && \
 sed -i 's/\/.snapshots/--timeshift-auto/g' /lib/systemd/system/grub-btrfsd.service && \
 systemctl daemon-reload && \
 systemctl enable grub-btrfsd && \
 systemctl restart grub-btrfsd && \
 
-echo "${GREEN}Configuração de snapshots automáticos FINALIZADA! ${NC}"
+echo -e "${GREEN}Configuração de snapshots automáticos FINALIZADA! ${NC}"
 
 #OBS.: Sempre que precisar restaurar o sistema, não esquecer de restaurar o snapshot no Timeshift assim que logar
