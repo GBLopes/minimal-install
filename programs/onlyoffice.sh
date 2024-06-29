@@ -10,4 +10,4 @@ echo 'deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyof
 
 apt-get update && \
 
-apt-get install onlyoffice-desktopeditors
+apt-get install -y onlyoffice-desktopeditors
