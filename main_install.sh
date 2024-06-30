@@ -96,6 +96,10 @@ echo -e "${GREEN}Instalando xorg...${NC}" && \
 echo -e "${GREEN}Instalando xfce...${NC}" && \
 ./programs/xfce.sh && \
 
+# xfce4-docklike-plugin
+echo -e "${GREEN}Instalando xfce4-docklike-plugin...${NC}" && \
+./programs/docklike_plugin.sh && \
+
 # ristretto
 echo -e "${GREEN}Instalando ristretto...${NC}" && \
 ./programs/ristretto.sh && \
