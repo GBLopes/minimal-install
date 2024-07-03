@@ -1,6 +1,6 @@
 favorites=xfce4-web-browser.desktop,xfce4-mail-reader.desktop,xfce4-file-manager.desktop,xfce4-terminal-emulator.desktop
-recent=xfce-ui-settings.desktop,org.gnome.gedit.desktop,appimagekit_2ebf6c789a2d28378231622e6c8f7bb6-Helix.desktop,appimagekit_e9b5206bbcef2b26c2d604f9a6621887-VSCodium.desktop,xfce4-terminal.desktop,xfce-mouse-settings.desktop,xfce-session-settings.desktop,xfce-wmtweaks-settings.desktop,xfce-wm-settings.desktop,xfce-keyboard-settings.desktop
-button-icon=view-app-grid
+recent=xfce-wmtweaks-settings.desktop,xfce-wm-settings.desktop,code.desktop,menu.desktop,xfce-session-settings.desktop,xfce4-about.desktop,xfce-workspaces-settings.desktop,xfce-ui-settings.desktop,org.kde.okular.desktop,xfce-backdrop-settings.desktop
+button-icon=org.xfce.panel.whiskermenu
 button-single-row=false
 show-button-title=false
 show-button-icon=true

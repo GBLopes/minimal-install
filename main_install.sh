@@ -274,8 +274,8 @@ echo -e "${GREEN}Instalando WhiteSur-cursors...${NC}" && \
 ./theme/whitesur_cursors.sh && \
 
 # plank
-echo -e "${GREEN}Instalando plank...${NC}" && \
-./programs/plank.sh && \
+# echo -e "${GREEN}Instalando plank...${NC}" && \
+# ./programs/plank.sh && \
 
 # lightdm-gtk-greeter
 echo -e "${GREEN}Configurando lightdm-gtk-greeter...${NC}" && \

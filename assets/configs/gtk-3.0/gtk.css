@@ -1,0 +1,22 @@
+#showdesktop-button * { 
+    background-color: transparent;
+    padding: 5px;
+}
+
+#xfce4-notification-plugin * {
+    -gtk-icon-transform: scale(.55);
+}
+
+#xfce4-power-manager-plugin * { 
+    -gtk-icon-transform: scale(.55);
+}
+
+#pulseaudio-button * { 
+    -gtk-icon-transform: scale(.55);
+}
+
+#whiskermenu-button * { 
+
+}
+
+

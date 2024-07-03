@@ -1,0 +1,14 @@
+[user]
+noWindowsListIfSingle=false
+onlyDisplayVisible=true
+showPreviews=true
+showWindowCount=true
+middleButtonBehavior=1
+indicatorStyle=2
+inactiveIndicatorStyle=1
+indicatorColorFromTheme=false
+pinned=brave-browser;thunar;org.gnome.gedit;Alacritty;org.kde.okular;
+inactiveColor=rgb(255,255,255)
+indicatorColor=rgb(53,132,228)
+keyComboActive=true
+keyAloneActive=true

@@ -6,15 +6,17 @@
     <value type="int" value="1"/>
     <property name="dark-mode" type="bool" value="true"/>
     <property name="panel-1" type="empty">
-      <property name="position" type="string" value="p=6;x=720;y=16"/>
+      <property name="position" type="string" value="p=8;x=680;y=748"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="0"/>
-      <property name="size" type="uint" value="26"/>
+      <property name="size" type="uint" value="39"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="7"/>
         <value type="int" value="3"/>
         <value type="int" value="4"/>
+        <value type="int" value="17"/>
+        <value type="int" value="2"/>
         <value type="int" value="5"/>
         <value type="int" value="1"/>
         <value type="int" value="19"/>
@@ -24,13 +26,13 @@
         <value type="int" value="16"/>
         <value type="int" value="9"/>
         <value type="int" value="15"/>
-        <value type="int" value="10"/>
-        <value type="int" value="11"/>
         <value type="int" value="12"/>
+        <value type="int" value="11"/>
+        <value type="int" value="10"/>
         <value type="int" value="14"/>
         <value type="int" value="13"/>
       </property>
-      <property name="length-adjust" type="bool" value="true"/>
+      <property name="length-adjust" type="bool" value="false"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -50,7 +52,7 @@
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chromium.instance2344;chromium.instance5092;firefox.instance3679;io.github.celluloid_player.Celluloid.instance-1"/>
+      <property name="mpris-players" type="string" value="brave.instance1333;chromium.instance2344;chromium.instance5092;firefox.instance3679;io.github.celluloid_player.Celluloid.instance-1"/>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
@@ -58,10 +60,10 @@
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-12" type="string" value="clock">
-      <property name="digital-layout" type="uint" value="2"/>
-      <property name="digital-date-font" type="string" value="San Francisco Text Medium 10"/>
-      <property name="digital-date-format" type="string" value="%a, %d/%m/%Y   %H:%M"/>
-      <property name="digital-time-font" type="string" value="San Francisco Text Medium 9"/>
+      <property name="digital-layout" type="uint" value="1"/>
+      <property name="digital-date-font" type="string" value="San Francisco Text Medium 9"/>
+      <property name="digital-date-format" type="string" value="%d/%m/%Y"/>
+      <property name="digital-time-font" type="string" value="San Francisco Text Medium 10"/>
     </property>
     <property name="plugin-7" type="string" value="whiskermenu"/>
     <property name="plugin-13" type="string" value="showdesktop"/>
@@ -79,6 +81,7 @@
     </property>
     <property name="plugin-23" type="string" value="systray">
       <property name="known-legacy-items" type="array">
+        <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="conexão de rede ethernet “ifupdown (enp0s3)” ativa"/>
         <value type="string" value="conexão de rede ethernet “enp0s3” ativa"/>
         <value type="string" value="nenhuma conexão de rede"/>
@@ -90,11 +93,11 @@
     </property>
     <property name="plugin-1" type="string" value="weather">
       <property name="location" type="empty">
-        <property name="name" type="string" value="São José dos Campos, Brazil"/>
-        <property name="latitude" type="string" value="-23.180800"/>
-        <property name="longitude" type="string" value="-45.891100"/>
+        <property name="name" type="string" value="Brasília, Plano Piloto"/>
+        <property name="latitude" type="string" value="-15.793404"/>
+        <property name="longitude" type="string" value="-47.882317"/>
       </property>
-      <property name="msl" type="int" value="0"/>
+      <property name="msl" type="int" value="1089"/>
       <property name="timezone" type="string" value="America/Sao_Paulo"/>
       <property name="offset" type="string" value="-03:00"/>
       <property name="cache-max-age" type="int" value="172800"/>
@@ -129,6 +132,10 @@
       </property>
     </property>
     <property name="plugin-6" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-2" type="string" value="docklike"/>
+    <property name="plugin-17" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
   </property>

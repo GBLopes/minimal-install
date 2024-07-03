@@ -35,9 +35,9 @@ sed -i 's/#export/export/g' "$HOME/.bashrc" && \
 source "$HOME/.bashrc" && \
 
 # Add lançadores plank
-echo -e "${GREEN}Adicionando lançadores na dock do usuário ${USER}...${NC}" && \
-mkdir -p "/home/$USER/.config/plank/dock1/launchers/" && \
-cp -R -f assets/plank/*.dockitem "/home/$USER/.config/plank/dock1/launchers" && \
+# echo -e "${GREEN}Adicionando lançadores na dock do usuário ${USER}...${NC}" && \
+# mkdir -p "/home/$USER/.config/plank/dock1/launchers/" && \
+# cp -R -f assets/plank/*.dockitem "/home/$USER/.config/plank/dock1/launchers" && \
 
 # config xfce
 echo -e "${GREEN}Configurando ambiente xfce do usuário ${USER}...${NC}" && \
