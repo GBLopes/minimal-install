@@ -44,8 +44,8 @@ echo -e "${GREEN}Configurando ambiente xfce do usuário ${USER}...${NC}" && \
 ./utils/config_xfce.sh && \
 
 # config picom
-echo -e "${GREEN}Configurando picom do usuário ${USER}...${NC}" && \
-./utils/config_picom.sh && \
+# echo -e "${GREEN}Configurando picom do usuário ${USER}...${NC}" && \
+# ./utils/config_picom.sh && \
 
 # Pasta Applications
 if [ ! -d "$HOME/Applications" ]; then

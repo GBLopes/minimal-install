@@ -217,8 +217,8 @@ echo -e "${GREEN}Instalando mugshot...${NC}" && \
 ./programs/mugshot.sh && \
 
 # picom
-echo -e "${GREEN}Instalando picom...${NC}" && \
-./programs/picom.sh && \
+# echo -e "${GREEN}Instalando picom...${NC}" && \
+# ./programs/picom.sh && \
 
 # rclone
 echo -e "${GREEN}Instalando rclone...${NC}" && \
