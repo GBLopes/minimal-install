@@ -13,4 +13,4 @@ if [ ! -d "$gtk_dir" ]; then
     echo "Pasta $gtk_dir não existe para o usuário $USER, criando..."
     mkdir -p "$gtk_dir"
 fi && \
-cp -R -f "assets/configs/gtk-3.0/*" "$gtk_dir"
+cp -R -f assets/configs/gtk-3.0/* "$gtk_dir"
