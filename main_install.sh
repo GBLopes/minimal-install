@@ -266,8 +266,12 @@ echo -e "${GREEN}Instalando WhiteSur-gtk-theme...${NC}" && \
 ./theme/whitesur_gtk_theme.sh && \
 
 # WhiteSur-icon-theme
-echo -e "${GREEN}Instalando WhiteSur-icon-theme...${NC}" && \
-./theme/whitesur_icon_theme.sh && \
+# echo -e "${GREEN}Instalando WhiteSur-icon-theme...${NC}" && \
+# ./theme/whitesur_icon_theme.sh && \
+
+# Kora Icon Theme
+echo -e "${GREEN}Instalando kora-icon-theme...${NC}" && \
+./theme/kora_icon_theme.sh && \
 
 # WhiteSur-cursors
 echo -e "${GREEN}Instalando WhiteSur-cursors...${NC}" && \
